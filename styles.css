@@ -204,6 +204,7 @@ body::before {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: shimmer 3s ease-in-out infinite;
+    margin: 0 120px 0 0; /* Add right margin to prevent overlap with logo */
 }
 
 @keyframes shimmer {
@@ -526,6 +527,28 @@ body::before {
     
     .title {
         font-size: 2.2rem;
+        margin: 0; /* Remove margin on mobile */
+        order: 1; /* Put title first */
+    }
+    
+    .logo {
+        position: relative;
+        right: auto;
+        order: 2; /* Put logo second */
+        margin-top: 10px;
+    }
+    
+    .logo-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .logo-text {
+        font-size: 12px;
+    }
+    
+    .logo-icon {
+        font-size: 16px;
     }
     
     .menu-nav {
@@ -575,16 +598,16 @@ body::before {
     }
     
     .logo-circle {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
     }
     
     .logo-text {
-        font-size: 12px;
+        font-size: 10px;
     }
     
     .logo-icon {
-        font-size: 16px;
+        font-size: 14px;
     }
     
     .menu-items {
