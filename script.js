@@ -206,13 +206,13 @@ class ModernMenu {
                 height: 80,
                 margin: 3,
                 color: {
-                    dark: '#8b4513',
-                    light: 'rgba(245, 241, 232, 0.1)'
+                    dark: '#f2d264',
+                    light: 'rgba(45, 21, 21, 0.1)'
                 }
             }, (error) => {
                 if (error) {
                     console.error('QR Code generation error:', error);
-                    qrContainer.innerHTML = '<span style="font-size: 12px; color: #8b4513;">QR</span>';
+                    qrContainer.innerHTML = '<span style="font-size: 12px; color: #f2d264;">QR</span>';
                 }
             });
         }
