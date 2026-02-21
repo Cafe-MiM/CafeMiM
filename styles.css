@@ -6,41 +6,56 @@
 }
 
 :root {
-    --primary-gradient: linear-gradient(135deg, #8b4513 0%, #654321 100%);
-    --secondary-gradient: linear-gradient(135deg, #d4c4a8 0%, #e8dcc0 100%);
-    --accent-gradient: linear-gradient(135deg, #a0522d 0%, #8b4513 100%);
-    --dark-gradient: linear-gradient(135deg, #5d2e0c 0%, #3d1f08 100%);
-    --light-gradient: linear-gradient(135deg, #f5f1e8 0%, #e8dcc0 100%);
-    --glass-bg: rgba(245, 241, 232, 0.1);
-    --glass-border: rgba(139, 69, 19, 0.2);
-    --text-primary: #8b4513;
-    --text-secondary: #654321;
-    --shadow-light: 0 8px 32px rgba(139, 69, 19, 0.15);
-    --shadow-medium: 0 12px 40px rgba(139, 69, 19, 0.25);
-    --shadow-heavy: 0 20px 60px rgba(139, 69, 19, 0.35);
+    --primary-gradient: linear-gradient(135deg, #c62828 0%, #961818 100%);
+    --secondary-gradient: linear-gradient(135deg, #f2d264 0%, #d4b830 100%);
+    --accent-gradient: linear-gradient(135deg, #ebd070 0%, #f2d264 100%);
+    --dark-gradient: linear-gradient(135deg, #2d1515 0%, #1a0c0c 100%);
+    --light-gradient: linear-gradient(135deg, #2d1515 0%, #1f0e0e 50%, #1a0c0c 100%);
+    --glass-bg: rgba(198, 40, 40, 0.12);
+    --glass-border: rgba(242, 210, 100, 0.25);
+    --text-primary: #f2d264;
+    --text-secondary: #ebd070;
+    --text-light: #fff8e8;
+    --shadow-light: 0 8px 32px rgba(242, 210, 100, 0.1);
+    --shadow-medium: 0 12px 40px rgba(198, 40, 40, 0.3);
+    --shadow-heavy: 0 20px 60px rgba(198, 40, 40, 0.4);
+    --gold-glow: 0 0 20px rgba(242, 210, 100, 0.3);
+    --red-glow: 0 0 30px rgba(198, 40, 40, 0.4);
 }
 
 body {
     font-family: 'Vazirmatn', sans-serif;
-    background: var(--light-gradient);
-    background-attachment: fixed;
+    background: #1a0c0c;
     min-height: 100vh;
     direction: rtl;
     position: relative;
     overflow-x: hidden;
+    color: var(--text-light);
 }
 
+/* Rotated Persian Carpet Background Image */
 body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100vmax;
+    height: 100vmax;
+    transform: translate(-50%, -50%) rotate(90deg);
+    background: url('carpet-bg.png') center center / contain no-repeat;
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* Dark overlay for readability */
+body::after {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(139, 69, 19, 0.05) 0%, transparent 50%);
+    background: rgba(13, 5, 5, 0.65);
     pointer-events: none;
     z-index: -1;
 }
@@ -63,15 +78,19 @@ body::before {
     50% { transform: scale(1.1); opacity: 0.8; }
 }
 
+@keyframes goldPulse {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.25; }
+}
+
 .container::before,
 .container::after {
     content: '';
     position: fixed;
-    width: 300px;
-    height: 300px;
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
-    background: var(--accent-gradient);
-    filter: blur(80px);
+    filter: blur(100px);
     opacity: 0.2;
     animation: float 6s ease-in-out infinite;
     z-index: -1;
@@ -80,12 +99,14 @@ body::before {
 .container::before {
     top: 10%;
     left: 10%;
+    background: radial-gradient(circle, rgba(198, 40, 40, 0.6), transparent);
     animation-delay: 0s;
 }
 
 .container::after {
     bottom: 10%;
     right: 10%;
+    background: radial-gradient(circle, rgba(242, 210, 100, 0.4), transparent);
     animation-delay: 3s;
 }
 
@@ -94,39 +115,50 @@ body::before {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--glass-bg);
+    background: linear-gradient(135deg, rgba(198, 40, 40, 0.2) 0%, rgba(45, 21, 21, 0.6) 100%);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
+    border: 2px solid rgba(242, 210, 100, 0.3);
     padding: 40px;
     border-radius: 30px;
     margin-bottom: 40px;
-    box-shadow: var(--shadow-medium);
+    box-shadow: var(--shadow-medium), inset 0 1px 0 rgba(242, 210, 100, 0.1);
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
-    /* Ensure header stays in place and doesn't move */
     transform: none !important;
 }
 
 .header:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-heavy);
+    box-shadow: var(--shadow-heavy), var(--gold-glow);
+    border-color: rgba(242, 210, 100, 0.5);
 }
 
+/* Persian carpet inner border pattern */
 .header::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.6s ease;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border: 1px solid rgba(242, 210, 100, 0.15);
+    border-radius: 24px;
+    pointer-events: none;
+    z-index: 1;
 }
 
-.header:hover::before {
-    left: 100%;
+.header::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border: 1px dashed rgba(242, 210, 100, 0.1);
+    border-radius: 18px;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .logo {
@@ -145,50 +177,53 @@ body::before {
     align-items: center;
     justify-content: center;
     position: relative;
-    box-shadow: var(--shadow-medium);
+    box-shadow: var(--shadow-medium), 0 0 15px rgba(242, 210, 100, 0.2);
     transition: all 0.4s ease;
     overflow: hidden;
+    border: 2px solid rgba(242, 210, 100, 0.4);
 }
 
+/* Carpet-style double border ring on logo */
 .logo-circle::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--accent-gradient);
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid rgba(242, 210, 100, 0.3);
     border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: all 0.4s ease;
+    z-index: 1;
 }
 
 .logo-circle:hover::before {
-    opacity: 1;
+    border-color: rgba(242, 210, 100, 0.6);
 }
 
 .logo-circle:hover {
     transform: scale(1.1) rotate(5deg);
-    box-shadow: var(--shadow-heavy);
+    box-shadow: var(--shadow-heavy), var(--gold-glow);
+    border-color: rgba(242, 210, 100, 0.7);
 }
 
 .logo-text {
     font-size: 14px;
     font-weight: 700;
-    color: #f5f1e8;
+    color: #f2d264;
     letter-spacing: 2px;
     margin-bottom: 4px;
     position: relative;
     z-index: 2;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .logo-icon {
-    color: #f5f1e8;
+    color: #f2d264;
     font-size: 20px;
     position: relative;
     z-index: 2;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .title {
@@ -198,15 +233,15 @@ body::before {
     text-align: center;
     position: relative;
     z-index: 2;
-    text-shadow: 0 4px 8px rgba(255, 255, 255, 0.8);
     letter-spacing: 3px;
-    background: linear-gradient(45deg, #8b4513, #654321, #8b4513);
-    background-size: 200% 200%;
+    background: linear-gradient(45deg, #f2d264, #fff8e8, #f2d264, #ebd070);
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     animation: shimmer 3s ease-in-out infinite;
-    margin: 0 120px 0 0; /* Add right margin to prevent overlap with logo */
+    margin: 0 120px 0 0;
+    text-shadow: none;
 }
 
 @keyframes shimmer {
@@ -226,19 +261,39 @@ body::before {
     margin-bottom: 40px;
     flex-wrap: wrap;
     position: relative;
+    padding: 30px 20px;
+    background:
+        url("data:image/svg+xml,%3Csvg width='50' height='50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M25 5 L30 15 L25 25 L20 15Z' fill='none' stroke='rgba(242,210,100,0.03)' stroke-width='0.5'/%3E%3Ccircle cx='25' cy='15' r='2' fill='none' stroke='rgba(198,40,40,0.04)' stroke-width='0.3'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, rgba(198, 40, 40, 0.05) 0%, rgba(45, 21, 21, 0.15) 100%);
+    background-size: 50px 50px, 100% 100%;
+    border: 1px solid rgba(242, 210, 100, 0.1);
+    border-radius: 25px;
+}
+
+/* Carpet ornamental border on nav */
+.menu-nav::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border: 1px solid rgba(242, 210, 100, 0.06);
+    border-radius: 20px;
+    pointer-events: none;
 }
 
 .category-btn {
-    background: var(--glass-bg);
+    background: linear-gradient(135deg, rgba(198, 40, 40, 0.15) 0%, rgba(45, 21, 21, 0.4) 100%);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid var(--glass-border);
+    border: 1px solid rgba(242, 210, 100, 0.2);
     border-radius: 20px;
     padding: 18px 30px;
     font-family: 'Vazirmatn', sans-serif;
     font-size: 16px;
     font-weight: 500;
-    color: var(--text-primary);
+    color: var(--text-light);
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     display: flex;
@@ -251,54 +306,97 @@ body::before {
     justify-content: center;
 }
 
+/* Inner carpet border on buttons */
 .category-btn::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.6s ease;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid rgba(242, 210, 100, 0.08);
+    border-radius: 16px;
+    pointer-events: none;
+    transition: all 0.4s ease;
 }
 
 .category-btn:hover::before {
-    left: 100%;
+    border-color: rgba(242, 210, 100, 0.2);
+}
+
+.category-btn.active::before {
+    border-color: rgba(242, 210, 100, 0.25);
 }
 
 .category-btn:hover {
     transform: translateY(-8px) scale(1.05);
-    box-shadow: var(--shadow-heavy);
+    box-shadow: var(--shadow-heavy), var(--gold-glow);
     background: var(--primary-gradient);
-    border-color: rgba(139, 69, 19, 0.4);
-    color: #f5f1e8;
+    border-color: rgba(242, 210, 100, 0.5);
+    color: #f2d264;
 }
 
 .category-btn.active {
-    background: var(--accent-gradient);
-    box-shadow: var(--shadow-heavy);
-    border-color: rgba(139, 69, 19, 0.5);
+    background: var(--primary-gradient);
+    box-shadow: var(--shadow-heavy), var(--gold-glow);
+    border-color: rgba(242, 210, 100, 0.6);
     transform: translateY(-5px) scale(1.02);
     font-weight: 600;
-    color: #f5f1e8;
+    color: #f2d264;
 }
 
 .category-btn.active i {
     animation: pulse 2s ease-in-out infinite;
+    color: #f2d264;
 }
 
 .category-btn i {
     font-size: 20px;
     transition: all 0.3s ease;
+    color: rgba(242, 210, 100, 0.7);
 }
 
 .category-btn:hover i {
     transform: scale(1.2) rotate(10deg);
+    color: #f2d264;
 }
 
-/* Menu Content Styles */
+/* Persian Carpet Ornamental Divider */
 .menu-content {
     position: relative;
+}
+
+.menu-content::before {
+    content: '';
+    display: block;
+    width: 60%;
+    max-width: 500px;
+    height: 1px;
+    margin: 0 auto 40px;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(242, 210, 100, 0.1) 10%,
+        rgba(242, 210, 100, 0.3) 30%,
+        rgba(242, 210, 100, 0.5) 50%,
+        rgba(242, 210, 100, 0.3) 70%,
+        rgba(242, 210, 100, 0.1) 90%,
+        transparent 100%
+    );
+    position: relative;
+}
+
+.menu-content::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: rgba(242, 210, 100, 0.4);
+    transform: rotate(45deg);
+    position: absolute;
+    top: -44px;
+    left: 50%;
+    margin-left: -4px;
 }
 
 .menu-section {
@@ -325,47 +423,74 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: var(--glass-bg);
+    background:
+        url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 L25 10 L20 20 L15 10Z' fill='none' stroke='rgba(242,210,100,0.07)' stroke-width='0.5'/%3E%3Cpath d='M0 20 L10 25 L0 30' fill='none' stroke='rgba(242,210,100,0.05)' stroke-width='0.5'/%3E%3Cpath d='M40 20 L30 25 L40 30' fill='none' stroke='rgba(242,210,100,0.05)' stroke-width='0.5'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, rgba(198, 40, 40, 0.25) 0%, rgba(45, 21, 21, 0.5) 100%);
+    background-size: 40px 40px, 100% 100%;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
+    border: 2px solid rgba(242, 210, 100, 0.25);
+    border-bottom: none;
     padding: 30px 40px;
     border-radius: 25px 25px 0 0;
     margin-bottom: 0;
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
-    /* Ensure header stays in place and doesn't move */
     transform: none !important;
 }
 
 .section-header:hover {
-    background: rgba(245, 241, 232, 0.15);
-    transform: translateY(-2px);
+    background:
+        url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0 L25 10 L20 20 L15 10Z' fill='none' stroke='rgba(242,210,100,0.1)' stroke-width='0.5'/%3E%3Cpath d='M0 20 L10 25 L0 30' fill='none' stroke='rgba(242,210,100,0.07)' stroke-width='0.5'/%3E%3Cpath d='M40 20 L30 25 L40 30' fill='none' stroke='rgba(242,210,100,0.07)' stroke-width='0.5'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, rgba(198, 40, 40, 0.3) 0%, rgba(45, 21, 21, 0.55) 100%);
+    background-size: 40px 40px, 100% 100%;
+    border-color: rgba(242, 210, 100, 0.4);
 }
 
+/* Carpet border ornament line under section header */
 .section-header::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.6s ease;
+    bottom: 0;
+    left: 20px;
+    right: 20px;
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(242, 210, 100, 0.4) 0px,
+        rgba(242, 210, 100, 0.4) 8px,
+        transparent 8px,
+        transparent 12px,
+        rgba(198, 40, 40, 0.6) 12px,
+        rgba(198, 40, 40, 0.6) 16px,
+        transparent 16px,
+        transparent 20px
+    );
+    z-index: 2;
 }
 
-.section-header:hover::before {
-    left: 100%;
+/* Corner ornaments - لچک */
+.section-header::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid rgba(242, 210, 100, 0.1);
+    border-radius: 18px 18px 0 0;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .section-header h2 {
-    color: var(--text-primary);
+    color: #f2d264;
     font-size: 2.2rem;
     font-weight: 700;
     position: relative;
     z-index: 2;
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     letter-spacing: 2px;
 }
 
@@ -375,21 +500,25 @@ body::before {
 }
 
 .section-icon i {
-    color: var(--text-primary);
+    color: #f2d264;
     font-size: 2.5rem;
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     transition: all 0.3s ease;
 }
 
 .section-header:hover .section-icon i {
     transform: scale(1.1) rotate(10deg);
+    text-shadow: 0 0 15px rgba(242, 210, 100, 0.5);
 }
 
 .menu-items {
-    background: var(--glass-bg);
+    background:
+        url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3C!-- Central diamond --%3E%3Cpath d='M40 10 L50 25 L40 40 L30 25Z' fill='none' stroke='rgba(242,210,100,0.035)' stroke-width='0.5'/%3E%3C!-- Small diamonds at corners --%3E%3Cpath d='M10 40 L15 50 L10 60 L5 50Z' fill='none' stroke='rgba(198,40,40,0.04)' stroke-width='0.5'/%3E%3Cpath d='M70 40 L75 50 L70 60 L65 50Z' fill='none' stroke='rgba(198,40,40,0.04)' stroke-width='0.5'/%3E%3C!-- Connecting lines --%3E%3Cpath d='M20 25 L30 25' fill='none' stroke='rgba(242,210,100,0.025)' stroke-width='0.3'/%3E%3Cpath d='M50 25 L60 25' fill='none' stroke='rgba(242,210,100,0.025)' stroke-width='0.3'/%3E%3Ccircle cx='40' cy='25' r='2' fill='none' stroke='rgba(242,210,100,0.03)' stroke-width='0.3'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, rgba(198, 40, 40, 0.1) 0%, rgba(45, 21, 21, 0.4) 100%);
+    background-size: 80px 80px, 100% 100%;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
+    border: 2px solid rgba(242, 210, 100, 0.15);
     border-top: none;
     padding: 40px;
     border-radius: 0 0 25px 25px;
@@ -399,8 +528,48 @@ body::before {
     transition: all 0.4s ease;
 }
 
+/* Inner carpet border for menu items container */
+.menu-items::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid rgba(242, 210, 100, 0.08);
+    border-top: none;
+    border-radius: 0 0 18px 18px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Carpet border pattern at bottom */
+.menu-items::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    left: 30px;
+    right: 30px;
+    height: 2px;
+    background: repeating-linear-gradient(
+        90deg,
+        rgba(242, 210, 100, 0.2) 0px,
+        rgba(242, 210, 100, 0.2) 5px,
+        transparent 5px,
+        transparent 8px,
+        rgba(198, 40, 40, 0.3) 8px,
+        rgba(198, 40, 40, 0.3) 11px,
+        transparent 11px,
+        transparent 14px
+    );
+    z-index: 2;
+}
+
 .menu-items:hover {
-    background: rgba(245, 241, 232, 0.12);
+    background:
+        url("data:image/svg+xml,%3Csvg width='80' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 10 L50 25 L40 40 L30 25Z' fill='none' stroke='rgba(242,210,100,0.05)' stroke-width='0.5'/%3E%3Cpath d='M10 40 L15 50 L10 60 L5 50Z' fill='none' stroke='rgba(198,40,40,0.06)' stroke-width='0.5'/%3E%3Cpath d='M70 40 L75 50 L70 60 L65 50Z' fill='none' stroke='rgba(198,40,40,0.06)' stroke-width='0.5'/%3E%3Cpath d='M20 25 L30 25' fill='none' stroke='rgba(242,210,100,0.035)' stroke-width='0.3'/%3E%3Cpath d='M50 25 L60 25' fill='none' stroke='rgba(242,210,100,0.035)' stroke-width='0.3'/%3E%3Ccircle cx='40' cy='25' r='2' fill='none' stroke='rgba(242,210,100,0.04)' stroke-width='0.3'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, rgba(198, 40, 40, 0.15) 0%, rgba(45, 21, 21, 0.45) 100%);
+    background-size: 80px 80px, 100% 100%;
 }
 
 .menu-item {
@@ -409,10 +578,10 @@ body::before {
     align-items: center;
     padding: 25px 30px;
     margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(135deg, rgba(198, 40, 40, 0.1) 0%, rgba(45, 21, 21, 0.3) 100%);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(139, 69, 19, 0.2);
+    border: 1px solid rgba(242, 210, 100, 0.12);
     border-radius: 20px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
@@ -423,60 +592,98 @@ body::before {
     margin-bottom: 0;
 }
 
+/* Carpet inner border on menu items */
 .menu-item::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.6s ease;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid rgba(242, 210, 100, 0.06);
+    border-radius: 16px;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    z-index: 1;
 }
 
 .menu-item:hover::before {
-    left: 100%;
+    border-color: rgba(242, 210, 100, 0.15);
+}
+
+/* Carpet corner ornament on menu items */
+.menu-item::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -1px;
+    transform: translateY(-50%);
+    width: 3px;
+    height: 40%;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(242, 210, 100, 0.15) 20%,
+        rgba(242, 210, 100, 0.25) 50%,
+        rgba(242, 210, 100, 0.15) 80%,
+        transparent 100%
+    );
+    border-radius: 2px;
+    transition: all 0.4s ease;
+}
+
+.menu-item:hover::after {
+    height: 60%;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(242, 210, 100, 0.25) 20%,
+        rgba(242, 210, 100, 0.4) 50%,
+        rgba(242, 210, 100, 0.25) 80%,
+        transparent 100%
+    );
 }
 
 .menu-item:hover {
     transform: translateX(-10px) scale(1.02);
-    box-shadow: var(--shadow-heavy);
-    background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(139, 69, 19, 0.4);
+    box-shadow: var(--shadow-heavy), 0 0 15px rgba(242, 210, 100, 0.1);
+    background: linear-gradient(135deg, rgba(198, 40, 40, 0.2) 0%, rgba(45, 21, 21, 0.4) 100%);
+    border-color: rgba(242, 210, 100, 0.3);
 }
 
 .item-info h3 {
-    color: var(--text-primary);
+    color: var(--text-light);
     font-size: 1.4rem;
     font-weight: 600;
     margin-bottom: 8px;
-    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }
 
 .menu-item:hover .item-info h3 {
     transform: translateX(5px);
+    color: #f2d264;
 }
 
 .item-description {
-    color: var(--text-secondary);
+    color: rgba(242, 210, 100, 0.6);
     font-size: 1rem;
     font-weight: 400;
     transition: all 0.3s ease;
 }
 
 .menu-item:hover .item-description {
-    color: var(--text-primary);
+    color: rgba(242, 210, 100, 0.85);
 }
 
 .item-price {
-    background: var(--accent-gradient);
-    color: #f5f1e8;
+    background: var(--secondary-gradient);
+    color: #2d1515;
     padding: 12px 25px;
     border-radius: 30px;
     font-weight: 700;
     font-size: 1.2rem;
-    box-shadow: var(--shadow-medium);
+    box-shadow: 0 4px 15px rgba(242, 210, 100, 0.3);
     min-width: 100px;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -484,24 +691,27 @@ body::before {
     overflow: hidden;
 }
 
+/* Gold carpet-style border on price badge */
 .item-price::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.6s ease;
+    top: 3px;
+    left: 3px;
+    right: 3px;
+    bottom: 3px;
+    border: 1px solid rgba(198, 40, 40, 0.3);
+    border-radius: 27px;
+    pointer-events: none;
+    transition: all 0.4s ease;
 }
 
 .menu-item:hover .item-price::before {
-    left: 100%;
+    border-color: rgba(198, 40, 40, 0.5);
 }
 
 .menu-item:hover .item-price {
     transform: scale(1.1) rotate(2deg);
-    box-shadow: var(--shadow-heavy);
+    box-shadow: 0 8px 25px rgba(242, 210, 100, 0.4);
 }
 
 /* Footer Styles */
@@ -512,8 +722,8 @@ body::before {
     margin-top: 60px;
     color: var(--text-primary);
     font-weight: 500;
-    border-top: 1px solid rgba(139, 69, 19, 0.2);
-    background: var(--glass-bg);
+    border-top: 1px solid rgba(242, 210, 100, 0.2);
+    background: linear-gradient(135deg, rgba(198, 40, 40, 0.1) 0%, rgba(45, 21, 21, 0.3) 100%);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-radius: 20px;
@@ -528,59 +738,59 @@ body::before {
         text-align: center;
         padding: 30px 20px;
     }
-    
+
     .title {
         font-size: 2.2rem;
-        margin: 0; /* Remove margin on mobile */
-        order: 1; /* Put title first */
+        margin: 0;
+        order: 1;
     }
-    
+
     .logo {
         position: relative;
         right: auto;
-        order: 2; /* Put logo second */
+        order: 2;
         margin-top: 10px;
     }
-    
+
     .logo-circle {
         width: 80px;
         height: 80px;
     }
-    
+
     .logo-text {
         font-size: 12px;
     }
-    
+
     .logo-icon {
         font-size: 16px;
     }
-    
+
     .menu-nav {
         flex-direction: column;
         align-items: center;
         gap: 15px;
     }
-    
+
     .category-btn {
         width: 100%;
         max-width: 320px;
         justify-content: center;
     }
-    
+
     .section-header {
         flex-direction: column;
         gap: 20px;
         text-align: center;
         padding: 25px 20px;
     }
-    
+
     .menu-item {
         flex-direction: column;
         gap: 20px;
         text-align: center;
         padding: 20px;
     }
-    
+
     .item-price {
         align-self: center;
     }
@@ -590,57 +800,73 @@ body::before {
     .container {
         padding: 15px;
     }
-    
+
     .header {
         padding: 25px 15px;
         border-radius: 20px;
     }
-    
+
     .title {
         font-size: 1.8rem;
         letter-spacing: 2px;
     }
-    
+
     .logo-circle {
         width: 70px;
         height: 70px;
     }
-    
+
     .logo-text {
         font-size: 10px;
     }
-    
+
     .logo-icon {
         font-size: 14px;
     }
-    
+
     .menu-items {
         padding: 25px 20px;
         border-radius: 0 0 20px 20px;
     }
-    
+
     .menu-item {
         padding: 20px;
         border-radius: 15px;
     }
-    
+
     .item-info h3 {
         font-size: 1.2rem;
     }
-    
+
     .item-price {
         font-size: 1.1rem;
         padding: 10px 20px;
         border-radius: 25px;
     }
-    
+
     .section-header {
         border-radius: 20px 20px 0 0;
     }
-    
+
     .section-header h2 {
         font-size: 1.8rem;
     }
+}
+
+/* Persian Carpet Ornamental Keyframe */
+@keyframes carpetGlow {
+    0%, 100% {
+        border-color: rgba(242, 210, 100, 0.15);
+        box-shadow: 0 0 0 rgba(242, 210, 100, 0);
+    }
+    50% {
+        border-color: rgba(242, 210, 100, 0.25);
+        box-shadow: 0 0 10px rgba(242, 210, 100, 0.05);
+    }
+}
+
+.section-header {
+    animation: carpetGlow 4s ease-in-out infinite;
 }
 
 /* Scrollbar Styling */
@@ -649,18 +875,18 @@ body::before {
 }
 
 ::-webkit-scrollbar-track {
-    background: rgba(245, 241, 232, 0.1);
+    background: rgba(45, 21, 21, 0.5);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--accent-gradient);
+    background: var(--secondary-gradient);
     border-radius: 5px;
-    border: 2px solid rgba(245, 241, 232, 0.1);
+    border: 2px solid rgba(45, 21, 21, 0.3);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-gradient);
+    background: linear-gradient(135deg, #f5db78 0%, #f2d264 100%);
 }
 
 /* Loading Animation */
@@ -686,4 +912,13 @@ body::before {
 .menu-section.active .menu-item:nth-child(5) { animation-delay: 0.5s; }
 .menu-section.active .menu-item:nth-child(6) { animation-delay: 0.6s; }
 .menu-section.active .menu-item:nth-child(7) { animation-delay: 0.7s; }
-.menu-section.active .menu-item:nth-child(8) { animation-delay: 0.8s; } 
+.menu-section.active .menu-item:nth-child(8) { animation-delay: 0.8s; }
+.menu-section.active .menu-item:nth-child(9) { animation-delay: 0.9s; }
+.menu-section.active .menu-item:nth-child(10) { animation-delay: 1.0s; }
+.menu-section.active .menu-item:nth-child(11) { animation-delay: 1.1s; }
+.menu-section.active .menu-item:nth-child(12) { animation-delay: 1.2s; }
+.menu-section.active .menu-item:nth-child(13) { animation-delay: 1.3s; }
+.menu-section.active .menu-item:nth-child(14) { animation-delay: 1.4s; }
+.menu-section.active .menu-item:nth-child(15) { animation-delay: 1.5s; }
+.menu-section.active .menu-item:nth-child(16) { animation-delay: 1.6s; }
+.menu-section.active .menu-item:nth-child(17) { animation-delay: 1.7s; }
