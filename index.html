@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>کافیه تین - منوی دیجیتال</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-circle">
+                    <span class="logo-text">CAFE TIN</span>
+                    <i class="fas fa-coffee logo-icon"></i>
+                </div>
+            </div>
+            <h1 class="title">CAFE TIN MENU</h1>
+            <div class="qr-section">
+                <div class="qr-code" id="qrCode">
+                    <!-- QR Code will be generated here -->
+                </div>
+                <p class="qr-text">اسکن کنید</p>
+            </div>
+        </header>
+
+        <!-- Menu Categories -->
+        <nav class="menu-nav">
+            <button class="category-btn active" data-category="coffee-based">
+                <i class="fas fa-coffee"></i>
+                Coffee Based
+            </button>
+            <button class="category-btn" data-category="hot-drinks">
+                <i class="fas fa-mug-hot"></i>
+                Hot Drinks
+            </button>
+            <button class="category-btn" data-category="cold-coffees">
+                <i class="fas fa-ice-cream"></i>
+                Cold Coffees
+            </button>
+            <button class="category-btn" data-category="cold-drinks">
+                <i class="fas fa-glass-martini-alt"></i>
+                Cold Drinks
+            </button>
+            <button class="category-btn" data-category="tea-based">
+                <i class="fas fa-leaf"></i>
+                Tea Based
+            </button>
+            <!-- Shakes - disabled
+            <button class="category-btn" data-category="shakes">
+                <i class="fas fa-blender"></i>
+                Shakes
+            </button>
+            -->
+            <button class="category-btn" data-category="appetizers">
+                <i class="fas fa-utensils"></i>
+                Appetizers
+            </button>
+        </nav>
+
+        <!-- Menu Content -->
+        <main class="menu-content">
+            <!-- Coffee Based Section -->
+            <section class="menu-section active" id="coffee-based">
+                <div class="section-header">
+                    <h2>Coffee Based</h2>
+                    <div class="section-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>اسپرسو کامرشیال</h3>
+                            <p class="item-description">Espresso Commercial</p>
+                        </div>
+                        <div class="item-price">50 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>اسپرسو اسپشیال</h3>
+                            <p class="item-description">Espresso Special</p>
+                        </div>
+                        <div class="item-price">60 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>آمریکانو</h3>
+                            <p class="item-description">Americano</p>
+                        </div>
+                        <div class="item-price">60 ت</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Hot Drinks Section -->
+            <section class="menu-section" id="hot-drinks">
+                <div class="section-header">
+                    <h2>Hot Drinks</h2>
+                    <div class="section-icon">
+                        <i class="fas fa-mug-hot"></i>
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>کاپوچینو</h3>
+                            <p class="item-description">Cappuccino</p>
+                        </div>
+                        <div class="item-price">70 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>لاته</h3>
+                            <p class="item-description">Latte</p>
+                        </div>
+                        <div class="item-price">85 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>هات چاکلت</h3>
+                            <p class="item-description">Hot Chocolate</p>
+                        </div>
+                        <div class="item-price">75 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>وایت چاکلت</h3>
+                            <p class="item-description">White Chocolate</p>
+                        </div>
+                        <div class="item-price">75 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>کارامل ماکیاتو</h3>
+                            <p class="item-description">Caramel Macchiato</p>
+                        </div>
+                        <div class="item-price">95 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>موکا</h3>
+                            <p class="item-description">Mocha</p>
+                        </div>
+                        <div class="item-price">95 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>ماسالا</h3>
+                            <p class="item-description">Masala</p>
+                        </div>
+                        <div class="item-price">70 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>پیتاچیبولاته</h3>
+                            <p class="item-description">Pistachio Latte</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>ماروچینو</h3>
+                            <p class="item-description">Marocchino</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>کورتادو</h3>
+                            <p class="item-description">Cortado</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>سینمون دولچه</h3>
+                            <p class="item-description">Cinnamon Dolce</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>پینک چاکلت</h3>
+                            <p class="item-description">Pink Chocolate</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>ماسالا</h3>
+                            <p class="item-description">Masala</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>کرک</h3>
+                            <p class="item-description">Karak</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>شیربیسکوییت</h3>
+                            <p class="item-description">Biscuit Milk</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>شیرنوتلا</h3>
+                            <p class="item-description">Nutella Milk</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>پسته زعفران</h3>
+                            <p class="item-description">Pistachio Saffron</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cold Coffees Section -->
+            <section class="menu-section" id="cold-coffees">
+                <div class="section-header">
+                    <h2>Cold Coffees</h2>
+                    <div class="section-icon">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>آیس آمریکانو</h3>
+                            <p class="item-description">Iced Americano</p>
+                        </div>
+                        <div class="item-price">60 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>آیس موکا</h3>
+                            <p class="item-description">Iced Mocha</p>
+                        </div>
+                        <div class="item-price">95 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>آیس کارامل ماکیاتو</h3>
+                            <p class="item-description">Iced Caramel Macchiato</p>
+                        </div>
+                        <div class="item-price">95 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>آیس لاته</h3>
+                            <p class="item-description">Iced Latte</p>
+                        </div>
+                        <div class="item-price">85 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>آیس چاکلت</h3>
+                            <p class="item-description">Iced Chocolate</p>
+                        </div>
+                        <div class="item-price">80 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>آفوگاتو</h3>
+                            <p class="item-description">Affogato</p>
+                        </div>
+                        <div class="item-price">85 ت</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cold Drinks Section -->
+            <section class="menu-section" id="cold-drinks">
+                <div class="section-header">
+                    <h2>Cold Drinks</h2>
+                    <div class="section-icon">
+                        <i class="fas fa-glass-martini-alt"></i>
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>لیموناد</h3>
+                            <p class="item-description">Lemonade</p>
+                        </div>
+                        <div class="item-price">60 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>موهیتو</h3>
+                            <p class="item-description">Mojito</p>
+                        </div>
+                        <div class="item-price">70 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>رد موهیتو</h3>
+                            <p class="item-description">Red Mojito</p>
+                        </div>
+                        <div class="item-price">70 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>بلوهاوایی</h3>
+                            <p class="item-description">Blue Hawaii</p>
+                        </div>
+                        <div class="item-price">70 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>اسموتی فصل</h3>
+                            <p class="item-description">Seasonal Smoothie</p>
+                        </div>
+                        <div class="item-price">60 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>پیناکولادا</h3>
+                            <p class="item-description">Pina Colada</p>
+                        </div>
+                        <div class="item-price">60 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>رد دراگون</h3>
+                            <p class="item-description">Red Dragon</p>
+                        </div>
+                        <div class="item-price">50 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>بلو دراگون</h3>
+                            <p class="item-description">Blue Dragon</p>
+                        </div>
+                        <div class="item-price">50 ت</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tea Based Section -->
+            <section class="menu-section" id="tea-based">
+                <div class="section-header">
+                    <h2>Tea Based</h2>
+                    <div class="section-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>چای</h3>
+                            <p class="item-description">Tea</p>
+                        </div>
+                        <div class="item-price">40 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>چای و باقلوا</h3>
+                            <p class="item-description">Tea & Baklava</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>چای سبز</h3>
+                            <p class="item-description">Green Tea</p>
+                        </div>
+                        <div class="item-price">60 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>گل گاو زبان</h3>
+                            <p class="item-description">Borage Tea</p>
+                        </div>
+                        <div class="item-price">60 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>به لیمو</h3>
+                            <p class="item-description">Lemon Verbena</p>
+                        </div>
+                        <div class="item-price">60 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>آویشن</h3>
+                            <p class="item-description">Thyme</p>
+                        </div>
+                        <div class="item-price">60 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>چای ترش</h3>
+                            <p class="item-description">Sour Tea / Hibiscus Tea</p>
+                        </div>
+                        <div class="item-price">60 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>گل گاوزبان</h3>
+                            <p class="item-description">Borage Tea</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>آرامش</h3>
+                            <p class="item-description">Relaxing Herbal Tea</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>سرماخوردگی</h3>
+                            <p class="item-description">Cold Relief Tea</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>بابونه</h3>
+                            <p class="item-description">Chamomile Tea</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>هفت گیاه</h3>
+                            <p class="item-description">Seven Herbs Tea</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Shakes Section - disabled
+            <section class="menu-section" id="shakes">
+                <div class="section-header">
+                    <h2>Shakes</h2>
+                    <div class="section-icon">
+                        <i class="fas fa-blender"></i>
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>شیک وانیل</h3>
+                            <p class="item-description">Vanilla Shake</p>
+                        </div>
+                        <div class="item-price">110 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>شیک نوتلا</h3>
+                            <p class="item-description">Nutella Shake</p>
+                        </div>
+                        <div class="item-price">140 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>شیک شکلات</h3>
+                            <p class="item-description">Chocolate Shake</p>
+                        </div>
+                        <div class="item-price">125 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>شیک موز شکلات</h3>
+                            <p class="item-description">Banana Chocolate Shake</p>
+                        </div>
+                        <div class="item-price">140 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>شیک بیسکوییت</h3>
+                            <p class="item-description">Biscuit Shake</p>
+                        </div>
+                        <div class="item-price">125 ت</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>شیک بادام زمینی</h3>
+                            <p class="item-description">Peanut Shake</p>
+                        </div>
+                        <div class="item-price">130 ت</div>
+                    </div>
+                </div>
+            </section>
+            -->
+
+            <!-- Appetizers Section -->
+            <section class="menu-section" id="appetizers">
+                <div class="section-header">
+                    <h2>Appetizers</h2>
+                    <div class="section-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>سیب زمینی سرخ شده</h3>
+                            <p class="item-description">French Fries</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>سیب زمینی با پنیر</h3>
+                            <p class="item-description">Cheese Fries</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>سیب زمینی ویژه</h3>
+                            <p class="item-description">Special Fries</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>مرغ خردل چاپای</h3>
+                            <p class="item-description">Mustard Chicken Chapai</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>ژامبون چاپاتای</h3>
+                            <p class="item-description">Ham Chapatai</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>مرغ و قارچ چاپاتی</h3>
+                            <p class="item-description">Chicken & Mushroom Chapati</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>اسنک ژامبون</h3>
+                            <p class="item-description">Ham Snack</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>اسنک پپرونی</h3>
+                            <p class="item-description">Pepperoni Snack</p>
+                        </div>
+                        <div class="item-price">-</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 کافیه تین - تمامی حقوق محفوظ است</p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
